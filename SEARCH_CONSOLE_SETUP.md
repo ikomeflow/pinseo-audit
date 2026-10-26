@@ -1,6 +1,6 @@
 # Google Search Console setup
 
-Status: integration code implemented and deployed; Google project PINSEO Audit (cryptic-album-512817-n3) created under the correct Ikomeflow account. Search Console API enabled, consent branding and read-only scope saved, and a web client restricted to https://audit.ikomeflow.com created. Google connection is in Testing. The approved Ikomeflow test account completed consent, property discovery and a live Futura Group traffic report. Public Google release/verification and live page-indexing verification remain outstanding. Public page audits remain available without signing in.
+Status: integration code implemented and deployed; Google project PINSEO Audit (cryptic-album-512817-n3) created under the correct Ikomeflow account. Search Console API enabled, consent branding and read-only scope saved, and a web client restricted to https://audit.ikomeflow.com created. Google connection is in Testing. The approved Ikomeflow test account completed consent, property discovery and a live Futura Group traffic report. Exact-page traffic, top queries and URL Inspection were verified live; Google returned “Submitted and indexed” for the Futura Group homepage. Public Google release/verification remains outstanding. Public page audits remain available without signing in.
 
 ## Owner configuration
 
@@ -16,7 +16,7 @@ Status: integration code implemented and deployed; Google project PINSEO Audit (
 
 In regular Chrome, open the optional Google panel, approve read-only access yourself, choose an accessible Search Console property, and load data. Check exact-page versus whole-property labeling, the 28-day dates, real totals, empty results, property mismatch, indexing errors, expired access, disconnect, and a different audited page. The API may return no data for new or low-traffic properties. Index inspection is Google’s recorded version and cannot run a live indexability test.
 
-Authenticated property discovery and Search Analytics totals were verified in Chrome with the approved test account. Live URL Inspection and live disconnect/revocation have not yet been verified; automated supplied-response tests cover request and failure handling. No private Google token or report data is committed to source.
+Authenticated property discovery and Search Analytics totals were verified in Chrome with the approved test account. Exact-page traffic, top queries and URL Inspection were also verified live. Live disconnect/revocation has not been verified; supplied-response tests cover request and failure handling. No private Google token or report data is committed to source.
 
 ## Data handling and quotas
 
