@@ -1,7 +1,24 @@
 'use client';
 import { useRef, useState } from 'react';
 import { parsePageSpeed } from '../lib/pagespeed.mjs';
-import { ArrowUpRight, ArrowRight, Search, FileSearch, Check, Minus, CircleAlert, Download, Printer, Globe, Smartphone, Monitor, ChevronDown, LoaderCircle, ShieldCheck, Gauge, Menu, X } from 'lucide-react';
+import ArrowUpRight from 'lucide-react/dist/esm/icons/arrow-up-right.mjs';
+import ArrowRight from 'lucide-react/dist/esm/icons/arrow-right.mjs';
+import Search from 'lucide-react/dist/esm/icons/search.mjs';
+import FileSearch from 'lucide-react/dist/esm/icons/file-search.mjs';
+import Check from 'lucide-react/dist/esm/icons/check.mjs';
+import Minus from 'lucide-react/dist/esm/icons/minus.mjs';
+import CircleAlert from 'lucide-react/dist/esm/icons/circle-alert.mjs';
+import Download from 'lucide-react/dist/esm/icons/download.mjs';
+import Printer from 'lucide-react/dist/esm/icons/printer.mjs';
+import Globe from 'lucide-react/dist/esm/icons/globe.mjs';
+import Smartphone from 'lucide-react/dist/esm/icons/smartphone.mjs';
+import Monitor from 'lucide-react/dist/esm/icons/monitor.mjs';
+import ChevronDown from 'lucide-react/dist/esm/icons/chevron-down.mjs';
+import LoaderCircle from 'lucide-react/dist/esm/icons/loader-circle.mjs';
+import ShieldCheck from 'lucide-react/dist/esm/icons/shield-check.mjs';
+import Gauge from 'lucide-react/dist/esm/icons/gauge.mjs';
+import Menu from 'lucide-react/dist/esm/icons/menu.mjs';
+import X from 'lucide-react/dist/esm/icons/x.mjs';
 
 type Finding = { id:string; title:string; status:'observed'|'review'|'not_checked'; evidence:string; action:string; group:string };
 type Report = { version:number; requestedUrl:string; finalUrl:string; checkedAt:string; source:string; redirects:{from:string;to:string;status:number}[]; checks:Finding[] };
