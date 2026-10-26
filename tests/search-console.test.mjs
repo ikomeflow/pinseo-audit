@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {propertyContainsPage,searchWindow,searchMetrics,googleRead,readSearchData} from '../lib/search-console.mjs';
+import {propertyContainsPage,searchWindow,previousWindow,searchMetrics,googleRead,readSearchData,readSearchBreakdown} from '../lib/search-console.mjs';
 
 test('properties match domain boundaries, scheme and URL prefixes',()=>{
   assert.equal(propertyContainsPage('sc-domain:example.com','https://www.example.com/page'),true);
@@ -62,4 +62,47 @@ test('expired authorization discards the result and mismatching properties make 
   let calls=0;
   await assert.rejects(readSearchData({token:'secret',property:'sc-domain:example.com',page:'https://different.com/',fetcher:async()=>{calls++}}),/includes this page/);
   assert.equal(calls,0);
+});
+
+test('selectable periods and comparison dates are inclusive and do not overlap',()=>{
+  const now=new Date('2026-10-26T18:00:00Z');
+  assert.deepEqual(searchWindow(now,7),{startDate:'2026-10-17',endDate:'2026-10-23'});
+  assert.deepEqual(previousWindow(searchWindow(now,7),7),{startDate:'2026-10-10',endDate:'2026-10-16'});
+  const range=searchWindow(now,90);
+  assert.equal((new Date(range.endDate)-new Date(range.startDate))/86400000,89);
+  assert.throws(()=>searchWindow(now,10000),/Choose/);
+});
+
+test('all detail dimensions retain exact page filters and use bounded row limits',async()=>{
+  const calls=[];
+  const fetcher=async(url,init)=>{calls.push(JSON.parse(init.body));return Response.json({rows:[{keys:['returned-key'],clicks:0,impressions:8,ctr:0,position:2}]})};
+  for(const dimension of ['query','page','country','device','date']){
+    const result=await readSearchBreakdown({token:'secret',property:'sc-domain:example.com',page:'https://example.com/a',days:7,dimension,now:new Date('2026-10-26T18:00:00Z'),fetcher});
+    assert.equal(result.rows[0].clicks,0);assert.equal(result.rows[0].key,'returned-key');
+  }
+  assert.deepEqual(calls.map(c=>c.rowLimit),[20,20,20,10,7]);
+  for(const call of calls){assert.equal(call.startDate,'2026-10-17');assert.equal(call.endDate,'2026-10-23');assert.equal(call.dataState,'final');assert.equal(call.dimensionFilterGroups[0].filters[0].expression,'https://example.com/a')}
+});
+
+test('trend rows omit missing dates and do not invent zero traffic',async()=>{
+  const result=await readSearchBreakdown({token:'secret',property:'sc-domain:example.com',dimension:'date',fetcher:async()=>Response.json({rows:[{keys:['2026-10-20'],impressions:5}]})});
+  assert.equal(result.rows.length,1);assert.equal(result.rows[0].clicks,null);assert.equal(result.rows[0].position,null);
+  let called=false;
+  for(const options of [{dimension:'password'},{dimension:'page',page:'https://different.com/'}]){
+    await assert.rejects(readSearchBreakdown({token:'secret',property:'sc-domain:example.com',...options,fetcher:async()=>{called=true}}));
+  }
+  assert.equal(called,false);
+});
+
+test('comparison uses a separate aggregate request and preserves current data on previous-period failure',async()=>{
+  const calls=[];
+  const fetcher=async(url,init)=>{const body=JSON.parse(init.body);calls.push(body);if(body.endDate==='2026-10-16')return new Response('',{status:429});return Response.json({rows:[{...(body.dimensions?{keys:['term']} :{}),clicks:20,impressions:100,ctr:.2,position:3}]})};
+  const result=await readSearchData({token:'secret',property:'sc-domain:example.com',days:7,compare:true,queryLimit:20,now:new Date('2026-10-26T18:00:00Z'),fetcher});
+  assert.equal(calls.length,3);assert.equal(calls[1].rowLimit,20);assert.equal(calls[2].dimensions,undefined);assert.equal(result.metrics.clicks,20);assert.equal(result.previousMetrics,null);assert.match(result.previousError,/quota/);assert.equal(result.previousDates.endDate,'2026-10-16');
+});
+
+test('detail and comparison authorization failures never return partial private results',async()=>{
+  await assert.rejects(readSearchBreakdown({token:'secret',property:'sc-domain:example.com',dimension:'country',fetcher:async()=>new Response('',{status:401})}),/expired/);
+  const fetcher=async(url,init)=>JSON.parse(init.body).endDate==='2026-10-16'?new Response('',{status:401}):Response.json({rows:[{clicks:9}]});
+  await assert.rejects(readSearchData({token:'secret',property:'sc-domain:example.com',days:7,compare:true,now:new Date('2026-10-26T18:00:00Z'),fetcher}),/expired/);
 });
