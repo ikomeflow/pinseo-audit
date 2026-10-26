@@ -1,0 +1,29 @@
+{
+  "name": "pinseo-audit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Free, transparent SEO checks by Futura Group",
+  "author": "Futura Group",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node server.mjs",
+    "build": "node build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check lib/audit.mjs && node --check lib/handler.mjs && node --check build.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "1.31.0",
+    "parse5": "8.0.0",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
+    "entities": "6.0.1"
+  },
+  "devDependencies": {
+    "esbuild": "0.28.2"
+  }
+}
