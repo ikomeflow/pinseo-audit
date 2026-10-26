@@ -1,6 +1,6 @@
 # Google Search Console setup
 
-Status: integration code implemented and deployed; Google project PINSEO Audit (cryptic-album-512817-n3) created under the correct Ikomeflow account. API enable submitted; OAuth client, consent verification and live Google-data verification pending. Public page audits remain available without signing in.
+Status: integration code implemented and deployed; Google project PINSEO Audit (cryptic-album-512817-n3) created under the correct Ikomeflow account. Search Console API enabled, consent branding and read-only scope saved, and a web client restricted to https://audit.ikomeflow.com created. Google connection is in Testing. The approved Ikomeflow test account completed consent, property discovery and a live Futura Group traffic report. Public Google release/verification and live page-indexing verification remain outstanding. Public page audits remain available without signing in.
 
 ## Owner configuration
 
@@ -16,7 +16,7 @@ Status: integration code implemented and deployed; Google project PINSEO Audit (
 
 In regular Chrome, open the optional Google panel, approve read-only access yourself, choose an accessible Search Console property, and load data. Check exact-page versus whole-property labeling, the 28-day dates, real totals, empty results, property mismatch, indexing errors, expired access, disconnect, and a different audited page. The API may return no data for new or low-traffic properties. Index inspection is Google’s recorded version and cannot run a live indexability test.
 
-No authenticated Google read has been performed in the current environment; supplied-response tests are not proof of a working live consent flow.
+Authenticated property discovery and Search Analytics totals were verified in Chrome with the approved test account. Live URL Inspection and live disconnect/revocation have not yet been verified; automated supplied-response tests cover request and failure handling. No private Google token or report data is committed to source.
 
 ## Data handling and quotas
 
@@ -32,3 +32,9 @@ Official references:
 - https://developers.google.com/webmaster-tools/v1/searchanalytics/query
 - https://developers.google.com/webmaster-tools/v1/urlInspection.index/inspect
 - https://developers.google.com/webmaster-tools/limits
+
+Runtime keys: GOOGLE_SEARCH_CONSOLE_CLIENT_ID is the public web-client identifier. GOOGLE_SEARCH_CONSOLE_MODE defaults to testing; set it to live only after the corresponding Google publishing status is Production. Deploy a saved version after environment changes. The app shows the testing restriction in its Google panel. Referrer policy follows Google’s strict-origin-when-cross-origin recommendation.
+
+## Current access limit
+
+Google publishing status remains Testing. Google’s console shows a lifetime cap of 100 users before app verification, and only approved test users can authorize this testing app. The public page auditor remains open to everyone. Do not describe the Google connection as generally available until Google publishing/verification is completed. The connected account does not list ikomeflow.com, so that site needs its own Search Console verification or access through the correct property account.

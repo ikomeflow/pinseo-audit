@@ -2,18 +2,40 @@
 
 Verified 26 October 2026.
 
-## Public addresses
+## Live addresses
 
-- Application: https://audit.ikomeflow.com/
-- Landing page: https://ikomeflow.com/pinseo-audit/
-- GitHub: https://github.com/ikomeflow/pinseo-audit
+- App: https://audit.ikomeflow.com/
+- WordPress landing: https://ikomeflow.com/pinseo-audit/ (page 382)
+- Source: https://github.com/ikomeflow/pinseo-audit
 - Hosting fallback: https://pinseo-audit.brightrice2.chatgpt.site/
 
-The Sites audience is public. No ChatGPT or application sign-in is required. WordPress page ID is 382. The landing page includes a direct launch link; its integration HTML is in wordpress/pinseo-audit-page.html. The homepage Work section now includes PINSEO Audit beside BizTrack and FlowTrack, using the PA logo and matching card styles. Its navigation is Ebook, Work, Shop, About, Login.
+Sites audience is public. Page audits require no account. The homepage Work section includes PINSEO Audit beside BizTrack and FlowTrack, with the matching PA logo and card styling. Homepage navigation is Ebook, Work, Shop, About, Login.
+
+## Current release
+
+Sites version 4 uses source commit 5551439f81dcec2558d7290b4bf2c585c17a9b36. Deployment appgdep_6adf9e00e26c8191bc3c2ec924481345 succeeded with environment revision 1. A later source commit may update these operational notes without changing application code. GitHub history differs from hosting history because files were uploaded through the signed-in GitHub interface after the connector rejected writes to this repository.
+
+The minimal interface has one URL field and audit action, Review findings first, and collapsed help and Google panels. The custom domain returns HTTP 200. The hosted Google client is configured; testing status is explicit. No client secret is used by PINSEO.
+
+## Google Search Console
+
+Google Cloud project PINSEO Audit (cryptic-album-512817-n3) belongs to the intended Ikomeflow account. Search Console API is enabled. Branding uses the app, privacy and terms URLs, with ikomeflow.com as authorized domain. The web client is restricted to https://audit.ikomeflow.com. Only webmasters.readonly is requested. The owner approved Google’s User Data Policy, the web client, the contact email, the test user and the read-only grant.
+
+Live Chrome testing successfully completed consent, listed accessible properties, and displayed actual Google Search Analytics totals for Futura Group. The report used a final-data window of 26 September–23 October 2026 in Pacific Time. Private measurements and tokens are not stored in this repository. The account does not list ikomeflow.com; that site needs a verified property or an account with access.
+
+Google publishing status remains Testing. The Google console shows a lifetime cap of 100 users before verification; only approved test users can connect while testing. Public Google release/verification is not complete. The general public can still use page audits without signing in. See SEARCH_CONSOLE_SETUP.md.
+
+## Verification
+
+Twenty-five automated tests pass, including public/private URL restrictions, redirect validation, bounded responses, HTML/entity extraction, accurate status handling, PageSpeed score validation, API origin/rate checks, Google property boundaries, Pacific date windows, invalid/missing metrics, token endpoint restrictions, exact-page filtering, independent totals, partial failure and authorization expiration. Local build and GitHub CI pass.
+
+Real Chrome page audits completed for ikomeflow.com and futuragroup.io, each returning 16 findings. The Futura Group page showed 1 Review, 14 Observed and 1 Not checked. Google property discovery and traffic totals were verified live. URL Inspection and live disconnect/revocation were not fully verified. Chrome disconnected during the phone-preview attempt; a new phone-size browser check was not completed. Responsive CSS is present. Desktop screenshots were saved.
+
+PageSpeed’s live API previously returned HTTP 429; the UI showed quota exhaustion and no numeric scores. Successful score parsing is covered with supplied-response tests. No successful live Lighthouse run has been claimed.
 
 ## DNS and HTTPS
 
-Cloudflare is authoritative for ikomeflow.com. Three new records were added with Auto TTL, leaving existing records unchanged:
+Cloudflare is authoritative. These records were added with Auto TTL, leaving existing records unchanged:
 
 | Type | Name | Value | Proxy |
 | --- | --- | --- | --- |
@@ -21,34 +43,12 @@ Cloudflare is authoritative for ikomeflow.com. Three new records were added with
 | TXT | _openai-site-verification.audit | openai-site-verification=WcLJ3DXSXqA_UIHMu_k8MdrJYiwP2uHzfGtKlma4j60 | DNS only |
 | TXT | _cf-custom-hostname.audit | a0cd4baa-4f55-4daf-8fec-03e2e0bfc736 | DNS only |
 
-The hosting service confirmed domain active and SSL active. These public DNS verification values are not login credentials. Do not change nameservers or reuse FlowTrack's GitHub Pages target for this server-backed app.
+The host confirmed domain and SSL active. These public verification values are not login credentials. Do not change nameservers or use FlowTrack’s GitHub Pages target for this server-backed app.
 
-## Current release and verification
+## Updates and limits
 
-Sites saved version 2 uses source commit 6d160add1f80abb020843c9538c5cd07f8861f79. The production deployment succeeded. GitHub contains the corresponding application source; its commit history differs because files were uploaded through the signed-in GitHub interface after the connector rejected writes to this new repository.
+Run npm ci, npm run check, npm test and npm run build. Build output is dist/server/index.js and dist/.openai/hosting.json. Use the Sites source workflow to push and package the matching source state before publishing. Deploy a saved version after environment changes. GitHub CI verifies source but does not deploy production.
 
-Sixteen automated tests pass. They cover public URL restrictions, private and reserved DNS addresses, per-redirect validation, response byte limits, HTML parsing, entity decoding, missing canonical evidence, indexing directives, unavailable checks, PageSpeed missing/invalid scores, API origin checks, and the per-isolate rate guard. The local build completed. Browser checks at a 390 px viewport confirmed a real audit, private-address rejection, working finding filters, and no horizontal overflow. Phone screenshots could not be captured by the in-app browser; desktop screenshots were saved.
+No paid SEO provider, billing upgrade, paid hosting plan, analytics or audit database was enabled. Hosting and Google quotas may interrupt checks. The rate guard is best effort, per isolate, and not a global quota. Page audits are limited to 1 MB and four redirects. Google reads are user-triggered, with no background polling or refresh tokens. Reports and tokens stay in tab memory.
 
-An unauthenticated request to the production custom-domain API audited https://ikomeflow.com/ successfully (HTTP 200, 16 findings). Its title was decoded to “Ikome Princewill | Business Ebook & Tracking Apps”, 49 characters, rather than counting the entity markup. The landing page returned HTTP 200, had one H1, and included the correct HTTPS launch link.
-
-Google PageSpeed's live API returned HTTP 429 during browser verification. The app showed quota exhaustion and no numeric scores. The actual successful-score display path is covered with supplied-response tests; a successful live Lighthouse run was not obtained.
-
-## Updates
-
-Run npm ci, npm run check, npm test, and npm run build. The build produces dist/server/index.js and dist/.openai/hosting.json. Push source and publish a matching archive through the Sites workflow. The GitHub workflow checks builds and tests; it does not automatically deploy production.
-
-For a separate deployment to a personal Cloudflare Workers account, build first, use wrangler.jsonc, and stay on Workers Free. Do not deploy the server app to GitHub Pages alone. The existing .openai/hosting.json binds the current Sites project; an independent new Site must use its own identity.
-
-## Costs and limitations
-
-No paid SEO service, paid hosting plan, billing upgrade, API key, analytics, or audit database was enabled. The UI and README explain size, redirect, rate, hosting, and Google quota limits. Free does not mean unlimited traffic or guaranteed uptime. Sites account terms govern the current host. The separately documented Cloudflare Workers Free limits are not a claim about the Sites account's plan. See README.md for the official provider links.
-
-The in-memory rate limiter is best effort, per isolate, and not a global distributed quota. DNS validation relies on public resolution and the Worker platform's egress isolation; never attach private network or tunnel bindings.
-
-## Minimal interface and Search Console update
-
-The new interface puts one URL field and audit action first, focuses findings on Review by default, and collapses help and the optional Google panel. Twenty-five automated tests pass, including Google property matching, Pacific dates, unavailable/invalid metrics, token destination restrictions, page filters, separate totals, partial failure and expiration. The local Worker build passes.
-
-Search Console code is implemented but activation and live end-to-end verification are pending. The correct Ikomeflow Google account now has the dedicated PINSEO Audit project cryptic-album-512817-n3, and the Search Console API enable action was submitted. The owner must finish the OAuth web client and Google consent/verification process, and configure the public client ID as described in SEARCH_CONSOLE_SETUP.md. The app reports setup pending until configured; it never substitutes example data.
-
-Sites version 3 (source 774698f153e9594b28bb6526a24b0d02cc58d00a, deployment appgdep_6adf953f77b481918f68e53bfb2f168b) published successfully. The custom domain returned HTTP 200 and the minimal heading. The public Google client configuration is currently empty; this is intentionally shown as setup pending. A real Chrome audit of ikomeflow.com completed with 16 findings (1 Review, 14 Observed, 1 Not checked). No live authenticated Google report has been verified.
+Sites account terms govern the current host. The separately documented Cloudflare Workers Free limits are not an asserted Sites entitlement. Keep private network/tunnel bindings disabled. See README.md and Google’s official quota documentation for details.
