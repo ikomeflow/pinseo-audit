@@ -1,0 +1,14 @@
+{
+  "pageUrl": "https://ikomeflow.com/pinseo-audit/",
+  "wordpressPageId": 382,
+  "title": "PINSEO Audit | Powered by Futura Group",
+  "description": "Free website SEO checks with clear findings and practical next steps. Test speed with Google. Powered by Futura Group.",
+  "imageUrl": "https://ikomeflow.com/wp-content/uploads/2026/10/pinseo-audit-share.png",
+  "imageFile": "pinseo-audit-share.png",
+  "imageWidth": 1200,
+  "imageHeight": 630,
+  "imageAlt": "PINSEO Audit — free website SEO checks. Powered by Futura Group.",
+  "twitterCard": "summary_large_image",
+  "configuration": "Rank Math page-level SEO title/description and Facebook image. Twitter uses Facebook data. These tags belong in the server-rendered head, not the Custom HTML body block.",
+  "verification": "The public URL returned HTTP 200 with matching og:title, og:description, og:image and Twitter tags to an unauthenticated facebookexternalhit request."
+}
