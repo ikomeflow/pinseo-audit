@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { normalizeUrl,isPublicIp,safeFetch,readBounded,collectHtml,buildChecks,verifyPublicHost,decodeNativeData } from '../lib/audit.mjs';
-import { parsePageSpeed } from '../lib/pagespeed.mjs';
+import { pageSpeedUrl } from '../lib/pagespeed.mjs';
 import { handleAudit } from '../lib/handler.mjs';
 
 test('addresses default to HTTPS, normalize domain and remove fragments',()=>{
@@ -58,10 +58,14 @@ test('X-Robots-Tag noindex is surfaced and malformed JSON-LD is flagged',async()
   const checks=buildChecks(await collectHtml('<script type="application/ld+json">invalid</script>'),{...page,headers:new Headers({'X-Robots-Tag':'googlebot: noindex'})});
   assert.equal(checks.find(c=>c.id==='indexing').status,'review');assert.equal(checks.find(c=>c.id==='schema').status,'review');
 });
-test('PageSpeed only displays real numeric scores and preserves unavailable values',()=>{
-  const speed=parsePageSpeed({lighthouseResult:{categories:{performance:{score:.91},accessibility:{score:null},seo:{score:0},'best-practices':{score:3}},audits:{}}},'mobile',page.url);
-  assert.deepEqual(speed.scores.map(s=>s.value),[91,null,null,0]);assert.deepEqual(speed.metrics,[]);
-  assert.throws(()=>parsePageSpeed({lighthouseResult:{runtimeError:{code:'FAILED'}}},'mobile',page.url),/No scores/);
+test('Test speed opens only Google PageSpeed and preserves the audited page query',()=>{
+  const original='https://example.com/page?a=1&next=https%3A%2F%2Fexample.org%2F#section';
+  const destination=new URL(pageSpeedUrl(original));
+  assert.equal(destination.origin,'https://pagespeed.web.dev');
+  assert.equal(destination.pathname,'/analysis');
+  assert.equal(destination.searchParams.get('url'),'https://example.com/page?a=1&next=https%3A%2F%2Fexample.org%2F');
+  assert.equal([...destination.searchParams].length,1);
+  for(const target of ['javascript:alert(1)','http://example.com/','https://name:pass@example.com/'])assert.throws(()=>pageSpeedUrl(target));
 });
 test('cross-origin API requests and invalid targets do not yield findings',async()=>{
   const cross=await handleAudit(new Request('https://audit.example.com/api/audit',{method:'POST',headers:{origin:'https://other.example.com','content-type':'application/json'},body:'{"url":"https://example.com"}'}));assert.equal(cross.status,403);
