@@ -2,7 +2,7 @@ import { html, css, icon, client } from '../.sites-runtime/assets.mjs';
 import { handleAudit } from '../lib/handler.mjs';
 import {privacy,terms} from '../lib/legal.mjs';
 const security = {
-  'X-Content-Type-Options':'nosniff', 'Referrer-Policy':'no-referrer',
+  'X-Content-Type-Options':'nosniff', 'Referrer-Policy':'strict-origin-when-cross-origin',
   'Permissions-Policy':'camera=(), microphone=(), geolocation=()',
   'Content-Security-Policy':"default-src 'self'; script-src 'self' https://accounts.google.com/gsi/client; style-src 'self' 'unsafe-inline' https://accounts.google.com/gsi/style; img-src 'self' data:; connect-src 'self' https://www.googleapis.com https://searchconsole.googleapis.com https://accounts.google.com/gsi/; frame-src https://accounts.google.com/gsi/; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'self'",
   'Cross-Origin-Opener-Policy':'same-origin-allow-popups'
@@ -13,7 +13,7 @@ export default { async fetch(request,env={}) {
     if(request.method!=='GET')return new Response('Method not allowed',{status:405,headers:{...security,Allow:'GET'}});
     const value=env.GOOGLE_SEARCH_CONSOLE_CLIENT_ID||'';
     const clientId=/^\d+-[a-zA-Z0-9_-]+\.apps\.googleusercontent\.com$/.test(value)?value:'';
-    return Response.json({clientId},{headers:{...security,'Cache-Control':'no-store'}});
+    return Response.json({clientId,testing:env.GOOGLE_SEARCH_CONSOLE_MODE!=='live'},{headers:{...security,'Cache-Control':'no-store'}});
   }
   if(u.pathname==='/api/audit') {
     if(request.method!=='POST')return new Response('Method not allowed',{status:405,headers:{...security,Allow:'POST'}});
