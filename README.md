@@ -14,7 +14,7 @@ It does not execute page JavaScript, crawl a whole site, verify Google indexing,
 
 ## PageSpeed
 
-An explicit Run PageSpeed button calls Google's PageSpeed Insights API directly from the visitor's browser, without a key. Only actual finite category scores from Google are displayed; missing scores remain unavailable. Runtime errors, timeout, and HTTP 429 never produce sample or estimated results. Tests are labeled mobile/desktop simulated Lighthouse lab data, with version, URL, and timestamp when supplied. This app does not claim real-user Core Web Vitals. Open in Google is available when the API is limited. See https://developers.google.com/speed/docs/insights/v5/get-started.
+After a successful audit, Test speed opens Google PageSpeed Insights directly in a new tab with the audited final URL prefilled. Google runs and displays the speed report. PINSEO does not call the PageSpeed API, show speed scores, or wait for an API quota. No API key is needed by PINSEO for this link. The link preserves page query parameters, removes fragments, and rejects non-HTTPS or credentialed URLs.
 
 ## Google Search Console (optional)
 
@@ -40,7 +40,7 @@ A direct alternative is a Cloudflare Workers Free account using wrangler.jsonc a
 
 ## Source layout
 
-app/ — interface and CSS; lib/audit.mjs — extraction, fetching, checks; lib/handler.mjs — HTTP API and rate guard; lib/pagespeed.mjs — score validation; worker/index.mjs — deployed request handler; build.mjs — bundling; tests/ — safety and accuracy regression tests; wordpress/ — landing page and portfolio card.
+app/ — interface and CSS; lib/audit.mjs — extraction, fetching, checks; lib/handler.mjs — HTTP API and rate guard; lib/pagespeed.mjs — direct Google report URL; worker/index.mjs — deployed request handler; build.mjs — bundling; tests/ — safety and accuracy regression tests; wordpress/ — landing page and portfolio card.
 
 The production Worker uses native HTMLRewriter. The Node preview uses a WHATWG HTML parser (parse5). Both inspect source HTML without script execution. The working application was simplified from the large starter after dependency installation exhausted available disk space.
 
