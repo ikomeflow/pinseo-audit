@@ -22,7 +22,9 @@ Authenticated property discovery and Search Analytics totals were verified in Ch
 
 Google Identity Services is loaded from Google only when the visitor opens the configured Google panel. Tokens and results stay in memory for that tab. Requests go directly to fixed Google endpoints with a bearer header, omit cookies and reject redirects. There is no refresh token or background polling. Disconnect clears the report and requests consent revocation; the visitor can also revoke from their Google account connections.
 
-Each load makes two Search Analytics calls, plus one URL Inspection call for a page view. Property discovery adds one call per connection. Google enforces short-term and daily load quotas. URL Inspection currently permits 2,000 calls per property per day and 600 per minute. Errors display unavailable, never sample metrics. No paid SEO provider is used.
+Each report load makes three Search Analytics calls: current totals, previous-period totals, and up to 20 search terms. A page view adds one URL Inspection call. Opening Top pages, Devices, Countries or Trends makes one additional read on demand, then caches the returned view for that report. Changing period, scope or property clears the cache and report; reconnecting or expiry also clears it. Property discovery adds one call per connection. Google enforces short-term and daily load quotas. Errors display unavailable, never sample metrics. No paid SEO provider is used.
+
+The period selector supports 7, 28 and 90 days with final data ending three days before today in Pacific Time. Previous periods are equal-length, adjacent and non-overlapping. Queries, pages and countries are limited to 20 returned rows, devices to 10, and dates to the selected window length. Country values are Google's three-letter codes. Charts show only returned dates; omitted dates are never inserted as zero traffic. Average positions are historical and all breakdowns retain the chosen exact-page or whole-property scope. Page aggregation and privacy omissions mean tables may not add up to ungrouped totals. These additions use the existing read-only permission.
 
 Official references:
 

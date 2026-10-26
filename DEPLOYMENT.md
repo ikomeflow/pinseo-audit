@@ -13,9 +13,9 @@ Sites audience is public. Page audits require no account. The homepage Work sect
 
 ## Current release
 
-Sites version 4 uses source commit 5551439f81dcec2558d7290b4bf2c585c17a9b36. Deployment appgdep_6adf9e00e26c8191bc3c2ec924481345 succeeded with environment revision 1. A later source commit may update these operational notes without changing application code. GitHub history differs from hosting history because files were uploaded through the signed-in GitHub interface after the connector rejected writes to this repository.
+Sites version 5 uses source commit 9afa079e428928063b714cdf940e80060e8b19a9. Deployment appgdep_6adfaf056db0819182122aeb5721398b succeeded with environment revision 1. A later source commit may update these operational notes without changing application code. GitHub history differs from hosting history because files were uploaded through the signed-in GitHub interface after the connector rejected writes to this repository.
 
-The minimal interface has one URL field and audit action, Review findings first, and collapsed help and Google panels. The custom domain returns HTTP 200. The hosted Google client is configured; testing status is explicit. No client secret is used by PINSEO.
+The minimal interface has one URL field and audit action, Review findings first, and collapsed help and Google panels. The Google report now adds 7/28/90-day periods, independent previous-period totals, and on-demand Search terms, Top pages, Devices, Countries and Trends views. Charts and tables use returned Google rows only. The custom domain returns HTTP 200. The hosted Google client is configured; testing status is explicit. No client secret is used by PINSEO.
 
 ## Google Search Console
 
@@ -27,7 +27,7 @@ Google publishing status remains Testing. The Google console shows a lifetime ca
 
 ## Verification
 
-Twenty-five automated tests pass, including public/private URL restrictions, redirect validation, bounded responses, HTML/entity extraction, accurate status handling, PageSpeed score validation, API origin/rate checks, Google property boundaries, Pacific date windows, invalid/missing metrics, token endpoint restrictions, exact-page filtering, independent totals, partial failure and authorization expiration. Local build and GitHub CI pass.
+Thirty automated tests pass, including public/private URL restrictions, redirect validation, bounded responses, HTML/entity extraction, accurate status handling, PageSpeed score validation, API origin/rate checks, Google property boundaries, Pacific date windows, invalid/missing metrics, token endpoint restrictions, exact-page filtering, independent totals, partial failure and authorization expiration. Added tests cover selectable date windows, adjacent comparison periods, all detail dimensions, bounded row limits and missing trend dates. The current local build and production deployment pass. GitHub CI runs tests and build for the source backup. New authenticated detail views still require live verification; the existing consent, traffic and indexing checks below describe earlier completed verification.
 
 Real Chrome page audits completed for ikomeflow.com and futuragroup.io, each returning 16 findings. The Futura Group page showed 1 Review, 14 Observed and 1 Not checked. Google property discovery and traffic totals were verified live. A subsequent Chrome session verified exact-page traffic, top-query rendering and URL Inspection; Google returned “Submitted and indexed” for the Futura Group homepage. Live disconnect/revocation was not fully verified. Chrome disconnected during the phone-preview attempt; a new phone-size browser check was not completed. Responsive CSS is present. Desktop screenshots were saved.
 
