@@ -9,7 +9,7 @@ Verified 26 October 2026.
 - GitHub: https://github.com/ikomeflow/pinseo-audit
 - Hosting fallback: https://pinseo-audit.brightrice2.chatgpt.site/
 
-The Sites audience is public. No ChatGPT or application sign-in is required. WordPress page ID is 382. The landing page includes a direct launch link; its integration HTML is in wordpress/pinseo-audit-page.html. The separate homepage-card.html is prepared markup; a homepage portfolio card has not been installed.
+The Sites audience is public. No ChatGPT or application sign-in is required. WordPress page ID is 382. The landing page includes a direct launch link; its integration HTML is in wordpress/pinseo-audit-page.html. The homepage Work section now includes PINSEO Audit beside BizTrack and FlowTrack, using the PA logo and matching card styles. Its navigation is Ebook, Work, Shop, About, Login.
 
 ## DNS and HTTPS
 
@@ -44,3 +44,11 @@ For a separate deployment to a personal Cloudflare Workers account, build first,
 No paid SEO service, paid hosting plan, billing upgrade, API key, analytics, or audit database was enabled. The UI and README explain size, redirect, rate, hosting, and Google quota limits. Free does not mean unlimited traffic or guaranteed uptime. Sites account terms govern the current host. The separately documented Cloudflare Workers Free limits are not a claim about the Sites account's plan. See README.md for the official provider links.
 
 The in-memory rate limiter is best effort, per isolate, and not a global distributed quota. DNS validation relies on public resolution and the Worker platform's egress isolation; never attach private network or tunnel bindings.
+
+## Minimal interface and Search Console update
+
+The new interface puts one URL field and audit action first, focuses findings on Review by default, and collapses help and the optional Google panel. Twenty-five automated tests pass, including Google property matching, Pacific dates, unavailable/invalid metrics, token destination restrictions, page filters, separate totals, partial failure and expiration. The local Worker build passes.
+
+Search Console code is implemented but activation and live end-to-end verification are pending. The correct Ikomeflow Google account now has the dedicated PINSEO Audit project cryptic-album-512817-n3, and the Search Console API enable action was submitted. The owner must finish the OAuth web client and Google consent/verification process, and configure the public client ID as described in SEARCH_CONSOLE_SETUP.md. The app reports setup pending until configured; it never substitutes example data.
+
+Sites version 3 (source 774698f153e9594b28bb6526a24b0d02cc58d00a, deployment appgdep_6adf953f77b481918f68e53bfb2f168b) published successfully. The custom domain returned HTTP 200 and the minimal heading. The public Google client configuration is currently empty; this is intentionally shown as setup pending. A real Chrome audit of ikomeflow.com completed with 16 findings (1 Review, 14 Observed, 1 Not checked). No live authenticated Google report has been verified.

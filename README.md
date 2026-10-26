@@ -1,6 +1,6 @@
 # PINSEO Audit
 
-Free, public, no-login website checks by Futura Group. Blue and white branding and the PA monogram follow the visual conventions inspected in ikomeflow/flowtrack. No analytics, audit database, paid data provider, or API key is required.
+Free, public, no-login website checks by Futura Group. Blue and white branding and the PA monogram follow the visual conventions inspected in ikomeflow/flowtrack. No analytics, audit database, paid data provider, or API key is required for public page checks. Optional Google Search Console authorization is separate and needs an owner-configured OAuth client.
 
 ## Run and verify
 
@@ -15,6 +15,14 @@ It does not execute page JavaScript, crawl a whole site, verify Google indexing,
 ## PageSpeed
 
 An explicit Run PageSpeed button calls Google's PageSpeed Insights API directly from the visitor's browser, without a key. Only actual finite category scores from Google are displayed; missing scores remain unavailable. Runtime errors, timeout, and HTTP 429 never produce sample or estimated results. Tests are labeled mobile/desktop simulated Lighthouse lab data, with version, URL, and timestamp when supplied. This app does not claim real-user Core Web Vitals. Open in Google is available when the API is limited. See https://developers.google.com/speed/docs/insights/v5/get-started.
+
+## Google Search Console (optional)
+
+The compact Google panel supports read-only property discovery, exact-page or whole-property web-search totals (clicks, impressions, CTR, historical average position), top 5 queries, and recorded URL indexing. A 28-day Pacific-date window ends three days before today, using final data only. Missing rows stay unavailable; query rows are not summed into totals. Property boundaries are checked. Google can omit queries for privacy. Index inspection is the Google-recorded version, not a live test.
+
+Google Identity Services obtains a short-lived token only after a user action. The client requests webmasters.readonly only. Tokens and results remain in tab memory, never local storage, cookies, a PINSEO database or the audit server. Google API calls use fixed allowlisted read endpoints. Expiration and disconnect clear data and cancel pending requests; disconnect requests Google revocation. No offline access or refresh tokens are used.
+
+Production connection is not yet activated: The correct Ikomeflow Google account is configured with a dedicated PINSEO Audit project (cryptic-album-512817-n3); Search Console API setup has reached the service dashboard. Production connection still requires a configured OAuth web client and Google’s consent/verification process. Without GOOGLE_SEARCH_CONSOLE_CLIENT_ID, the UI explicitly shows setup pending and offers the official Search Console link. See SEARCH_CONSOLE_SETUP.md to finish consent/client configuration and Google verification. No real Google-data session has been verified yet.
 
 ## Privacy and abuse protection
 
