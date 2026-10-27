@@ -1,6 +1,6 @@
 # PINSEO Audit deployment
 
-Verified 26 October 2026.
+Verified 27 October 2026.
 
 ## Live addresses
 
@@ -13,7 +13,7 @@ Sites audience is public. Page audits require no account. The homepage Work sect
 
 ## Current release
 
-Sites version 6 uses source commit 6fcd7a909e808b424d1eb76e206cfdec4fb81fed. Deployment appgdep_6adfb630ea8081919a241ae7ac39d6c9 succeeded with environment revision 1. A later source commit may update these operational notes without changing application code. GitHub history differs from hosting history because files were uploaded through the signed-in GitHub interface after the connector rejected writes to this repository.
+Sites version 9 is live at source commit 6ae2aa02be08ece2b2417d25ad5b21302ca96617. Deployment appgdep_6ae0661a7c9c8191aab12bc85234cd22 succeeded with environment revision 1. GitHub is a source backup with its own commit history; GitHub CI checks the code and does not deploy production. The app and legal-page footers now say Produced by Futura Group. WordPress page 382 was updated separately: the launch credit, footer, search title/description and inherited Open Graph/Twitter title/description now use Produced by Futura Group. The wordpress directory stores its matching launch HTML and metadata settings.
 
 The minimal interface has one URL field and Run audit action, Review findings first, a direct Test speed link in the results toolbar, and collapsed help and Google panels. The WordPress landing now matches FlowTrack and BizTrack: dark full-width layout, shared navigation and typography, PA logo and one launch button. The Google report now adds 7/28/90-day periods, independent previous-period totals, and on-demand Search terms, Top pages, Devices, Countries and Trends views. Charts and tables use returned Google rows only. The custom domain returns HTTP 200. The hosted Google client is configured; testing status is explicit. No client secret is used by PINSEO.
 
@@ -27,7 +27,9 @@ Google publishing status remains Testing. The Google console shows a lifetime ca
 
 ## Verification
 
-Thirty automated tests pass, including public/private URL restrictions, redirect validation, bounded responses, HTML/entity extraction, accurate status handling, direct PageSpeed URL handling, API origin/rate checks, Google property boundaries, Pacific date windows, invalid/missing metrics, token endpoint restrictions, exact-page filtering, independent totals, partial failure and authorization expiration. Added tests cover selectable date windows, adjacent comparison periods, all detail dimensions, bounded row limits and missing trend dates. The current local build and production deployment pass. GitHub CI runs tests and build for the source backup. New authenticated detail views still require live verification; the existing consent, traffic and indexing checks below describe earlier completed verification.
+The current app includes domain-friendly entry, finding search and priority filters, same-page repeat comparisons, an action checklist with progress and notes, and search/sort/opportunity filters for returned Google terms and pages. Notes and progress remain in tab memory; Save includes them in the downloaded JSON. The checklist and keyword controls passed local interface checks; the keyword controls used explicitly labelled sample data. A live audit and the published credits were verified in Chrome. The existing Google authorization flow was unchanged; a new authenticated Google check and phone-size check were not completed for these updates.
+
+Thirty-seven automated tests pass, including public/private URL restrictions, redirect validation, bounded responses, HTML/entity extraction, accurate status handling, direct PageSpeed URL handling, API origin/rate checks, Google property boundaries, Pacific date windows, invalid/missing metrics, token endpoint restrictions, exact-page filtering, independent totals, partial failure and authorization expiration. Added tests cover selectable date windows, adjacent comparison periods, all detail dimensions, bounded row limits and missing trend dates. The current local build and production deployment pass. GitHub CI runs tests and build for the source backup. New authenticated detail views still require live verification; the existing consent, traffic and indexing checks below describe earlier completed verification.
 
 Real Chrome page audits completed for ikomeflow.com and futuragroup.io, each returning 16 findings. The Futura Group page showed 1 Review, 14 Observed and 1 Not checked. Google property discovery and traffic totals were verified live. A subsequent Chrome session verified exact-page traffic, top-query rendering and URL Inspection; Google returned “Submitted and indexed” for the Futura Group homepage. Live disconnect/revocation was not fully verified. Chrome disconnected during the phone-preview attempt; a new phone-size browser check was not completed. Responsive CSS is present. Desktop screenshots were saved.
 

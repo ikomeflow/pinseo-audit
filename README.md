@@ -1,5 +1,15 @@
 # PINSEO Audit
 
+## Finding search and repeat checks
+
+Findings now include optional To do / Working on it / Reviewed progress and personal notes inside their existing details. A collapsed action checklist summarises flagged and personally annotated findings. State is isolated by exact final URL and retained only in tab memory; Save includes the current page's checklist in JSON. A changed evidence string is explicitly flagged and is not counted as a current reviewed item until reconfirmed. Manual progress never alters automated finding status.
+
+The optional Google panel adds search and sort controls for returned terms and pages. An optional review-opportunity filter uses at least 100 impressions and under 3% CTR as an explicit starting threshold, not an SEO benchmark or promise. Missing metrics are not converted to zeros. Filters operate only on the bounded rows Google returned; they make no additional Google requests and do not imply exhaustive keyword coverage. Test fixtures for UI verification are local-only and excluded from publication.
+
+The original blue-and-white layout is retained. The address field explains that a domain is accepted and adds HTTPS before submission; the server still validates public hosts, redirects, response sizes and timeouts. Search findings by words in their title, group, evidence or suggested action, alongside the existing status filters and a compact priority filter. Priorities are manual review guidance, never a ranking score or an instruction to change intentional directives.
+
+Repeated successful checks of the same final URL (including its query) and the same source method can be compared in the current tab. The comparison shows previous/current evidence, newly flagged items, items no longer flagged and items now unavailable. Unavailable or omitted checks are never counted as fixed. A failed request keeps the previous successful report visible with an explicit message. No reports, history or Google tokens are persisted by these features.
+
 Free, public, no-login website checks by Futura Group. Blue and white branding and the PA monogram follow the visual conventions inspected in ikomeflow/flowtrack. No analytics, audit database, paid data provider, or API key is required for public page checks. Optional Google Search Console authorization is separate and needs an owner-configured OAuth client.
 
 ## Run and verify
