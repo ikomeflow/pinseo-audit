@@ -1,0 +1,6 @@
+import {actionLabels} from '../lib/action-insights.mjs';
+export default function FindingAction({finding,action,onChange}:{finding:any;action:any;onChange:(patch:any)=>void}) {
+  const value=action||{status:'todo',note:'',evidence:finding.evidence};
+  const changed=value.evidence!==finding.evidence;
+  return <div className="finding-action"><label htmlFor={'action-'+finding.id}>Your progress<select id={'action-'+finding.id} value={value.status} onChange={e=>onChange({status:e.target.value})}>{Object.entries(actionLabels).map(([key,label])=><option key={key} value={key}>{label}</option>)}</select></label><label htmlFor={'note-'+finding.id}>Your notes (optional)<textarea id={'note-'+finding.id} rows={2} maxLength={1000} value={value.note} placeholder="What you plan to check or change" onChange={e=>onChange({note:e.target.value})}/></label>{changed&&<div><p className="hint">Evidence changed since your last progress update. Check it again before marking Reviewed.</p>{value.status==='reviewed'&&<button className="button secondary" onClick={()=>onChange({status:'reviewed'})}>Confirm review of current evidence</button>}</div>}<p className="hint">Your label does not change the audit finding. Notes stay in this tab; Save includes them in your downloaded report.</p></div>;
+}
