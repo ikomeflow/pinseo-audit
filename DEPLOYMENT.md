@@ -2,6 +2,14 @@
 
 Verified 27 October 2026.
 
+## Affected-item update — 27 October 2026
+
+Heading findings list ordered H1–H6 text and IDs; missing-alt findings list exact source image positions, IDs and declared addresses without loading images. Lists are bounded to 100 headings and 30 affected images, with full totals shown. Search, same-page comparisons, personal review invalidation and all report exports include the affected items. Fifty automated tests pass and the Worker builds successfully.
+
+Chrome DevTools responsive mode confirmed actual document widths of 390 and 320 pixels, with matching scroll widths and no horizontal overflow during a real completed Futura Group audit, expanded heading list, filtering and note entry. Progress selection also worked. This supersedes the earlier unverified viewport attempt below; no physical handset was used. Device mode was switched off afterward.
+
+Google Audience now reports In production for the existing project, and the non-sensitive read-only scope needs no sensitive-scope verification. Hosted GOOGLE_SEARCH_CONSOLE_MODE was changed to live and deployment appgdep_6ae170c7b7848191a2df1757f7617071 succeeded with environment revision 2 and Sites version 11. The current production project can be retained; any future OAuth testing environment should use a separate project. No new OAuth credential or owner grant was created. Google brand verification was attempted and returned one issue: the app homepage is not registered to the owner account. Verify the audit homepage with specific owner approval, then allow the 24 hours Google requests before retrying branding. Public-user consent has not been newly tested. See SEARCH_CONSOLE_SETUP.md.
+
 ## Live addresses
 
 - App: https://audit.ikomeflow.com/
@@ -29,7 +37,7 @@ Google Cloud project PINSEO Audit (cryptic-album-512817-n3) belongs to the inten
 
 Live Chrome testing successfully completed consent, listed accessible properties, and displayed actual Google Search Analytics totals for Futura Group. The report used a final-data window of 26 September–23 October 2026 in Pacific Time. Private measurements and tokens are not stored in this repository. The account does not list ikomeflow.com; that site needs a verified property or an account with access.
 
-Google publishing status remains Testing. The Google console shows a lifetime cap of 100 users before verification; only approved test users can connect while testing. Public Google release/verification is not complete. The general public can still use page audits without signing in. See SEARCH_CONSOLE_SETUP.md.
+At the earlier verification, Google publishing status was Testing and only approved test users could connect. The current production status and remaining branding issue are recorded above. The general public can still use page audits without signing in. See SEARCH_CONSOLE_SETUP.md.
 
 ## Earlier verification
 

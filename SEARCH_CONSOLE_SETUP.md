@@ -1,6 +1,20 @@
 # Google Search Console setup
 
-Status: integration code implemented and deployed; Google project PINSEO Audit (cryptic-album-512817-n3) created under the correct Ikomeflow account. Search Console API enabled, consent branding and read-only scope saved, and a web client restricted to https://audit.ikomeflow.com created. Google connection is in Testing. The approved Ikomeflow test account completed consent, property discovery and a live Futura Group traffic report. Exact-page traffic, top queries and URL Inspection were verified live; Google returned “Submitted and indexed” for the Futura Group homepage. Public Google release/verification remains outstanding. Public page audits remain available without signing in.
+## Public-release status — 27 October 2026
+
+Google Auth Platform Audience now reports **In production** for PINSEO Audit (cryptic-album-512817-n3), under ikome2flow@gmail.com. The existing web client is retained. GOOGLE_SEARCH_CONSOLE_MODE is now live in hosted environment revision 2, applied by a successful deployment. No new OAuth client, permission scope or verified-owner grant was created. A new consent test by an account outside the former test-user list remains unverified.
+
+Google lists webmasters.readonly as non-sensitive. Verification Center confirms that sensitive-scope verification is not required. Branding contains PINSEO Audit, ikome2flow@gmail.com as support/developer contact, https://audit.ikomeflow.com/ as homepage, /privacy and /terms on that host, and ikomeflow.com as the authorized domain. The privacy page describes data use, memory-only token handling, revocation and Google's Limited Use requirements.
+
+The automated brand verification was run. Google returned one issue: the homepage https://audit.ikomeflow.com/ is not registered to the account. Branding is therefore not yet shown to users. Google instructs the owner to verify the homepage and wait 24 hours before retrying, so that its systems can update. Do not request re-verification before addressing this issue, and do not describe the app as brand-verified.
+
+Prepared next action: add/verify the narrow URL-prefix Search Console property https://audit.ikomeflow.com/ for ikome2flow@gmail.com. This establishes verified-owner access and needs the user's specific approval before completing verification or publishing a verification tag. It is separate from PinPets, which must not be verified. Do not grant other accounts access. Once ownership is confirmed and Google's waiting period has elapsed, retry the branding check. Any legal declarations require owner acceptance. No email or support message has been sent.
+
+The existing project is now the production configuration. Use a separate Google project for any future development/testing client, consistent with Google's production-readiness guidance. Keep the production origin restricted to https://audit.ikomeflow.com, request only webmasters.readonly, and do not add offline access, server redirects, localhost origins or a client secret to PINSEO. No billing upgrade is needed for this setup.
+
+References: https://developers.google.com/identity/protocols/oauth2/production-readiness/policy-compliance and https://support.google.com/cloud/answer/13807376.
+
+Initial setup history: integration code implemented and deployed; Google project PINSEO Audit (cryptic-album-512817-n3) created under the correct Ikomeflow account. Search Console API enabled, consent branding and read-only scope saved, and a web client restricted to https://audit.ikomeflow.com created. Google connection initially used Testing. The approved Ikomeflow test account completed consent, property discovery and a live Futura Group traffic report. Exact-page traffic, top queries and URL Inspection were verified live; Google returned “Submitted and indexed” for the Futura Group homepage. Public Google release/verification remains outstanding. Public page audits remain available without signing in.
 
 ## Owner configuration
 
@@ -37,6 +51,6 @@ Official references:
 
 Runtime keys: GOOGLE_SEARCH_CONSOLE_CLIENT_ID is the public web-client identifier. GOOGLE_SEARCH_CONSOLE_MODE defaults to testing; set it to live only after the corresponding Google publishing status is Production. Deploy a saved version after environment changes. The app shows the testing restriction in its Google panel. Referrer policy follows Google’s strict-origin-when-cross-origin recommendation.
 
-## Current access limit
+## Current access and branding limit
 
-Google publishing status remains Testing. Google’s console shows a lifetime cap of 100 users before app verification, and only approved test users can authorize this testing app. The public page auditor remains open to everyone. Do not describe the Google connection as generally available until Google publishing/verification is completed. The connected account does not list ikomeflow.com, so that site needs its own Search Console verification or access through the correct property account.
+Google publishing status is In production and the hosted mode is live. The scope is non-sensitive, so the sensitive/unapproved-scope lifetime cap shown by Google is not an asserted cap on this app's read-only flow. Brand verification remains blocked on homepage ownership as described above. General page checks remain public without Google sign-in. Confirm a real consent flow with a separate permitted account before claiming a new public-user end-to-end test.
