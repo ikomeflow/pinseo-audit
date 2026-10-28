@@ -1,6 +1,6 @@
 import { build } from 'esbuild';
 import { readFile, writeFile, mkdir } from 'node:fs/promises';
-import { renderToStaticMarkup } from 'react-dom/server';
+import { renderToString } from 'react-dom/server';
 import React from 'react';
 import { pathToFileURL } from 'node:url';
 // Keep builds usable on small laptops as well as hosted build runners.
@@ -9,7 +9,7 @@ process.env.GOMEMLIMIT ??= '128MiB';
 const temp = new URL('./.sites-runtime/', import.meta.url); await mkdir(temp,{recursive:true});
 await build({entryPoints:['app/audit-client.tsx'],bundle:true,platform:'node',format:'esm',jsx:'automatic',packages:'external',outfile:'.sites-runtime/render.mjs'});
 const {default:App} = await import(pathToFileURL(process.cwd()+'/.sites-runtime/render.mjs').href+'?v='+Date.now());
-const markup = renderToStaticMarkup(React.createElement(App));
+const markup = renderToString(React.createElement(App));
 const client = await build({entryPoints:['app/start.tsx'],bundle:true,minify:true,format:'iife',jsx:'automatic',write:false,define:{'process.env.NODE_ENV':'"production"'},legalComments:'eof'});
 const css = await readFile('app/pinseo.css','utf8'), icon = await readFile('public/favicon.svg','utf8');
 const html = '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>PINSEO Audit — Free website SEO checks | Futura Group</title><meta name="description" content="Understand your website’s SEO essentials with evidence, practical next steps, and optional Google PageSpeed Insights. Free and no login."><meta property="og:title" content="PINSEO Audit — Free SEO checks"><meta property="og:description" content="A little clarity. A better website. Free, transparent SEO checks by Futura Group."><meta property="og:type" content="website"><link rel="icon" href="/favicon.svg"><link rel="stylesheet" href="/app.css"></head><body><div id="root">'+markup+'</div><noscript><p style="padding:24px">Enable JavaScript to run an audit. PINSEO Audit never runs scripts on the website being audited.</p></noscript><script src="/app.js" defer></script></body></html>';

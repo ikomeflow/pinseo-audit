@@ -1,5 +1,15 @@
 # PINSEO Audit
 
+## Audit progress and usable reports
+
+The form validates malformed or unsupported addresses before starting a request and explicitly describes the single-page scope. Audits stream real stages: reading the page, checking page details, robots.txt and the sitemap. Initial page findings can be read while resource checks continue. They are marked incomplete and cannot be exported until the final report arrives. Cancel stops the client request and propagates cancellation through server fetching and body reading; a previous successful report is retained. A partial or interrupted stream never becomes a successful report or a comparison baseline.
+
+Flagged findings include practical checking steps and an optional WordPress guide. Instructions distinguish intentional indexing directives, decorative image descriptions and multiple headings from automatic errors. The existing evidence, priorities, notes and original blue-and-white layout are preserved.
+
+PDF report opens a complete local print view with all findings and notes, independently of screen filters. Choose Print / Save PDF in that view, then Save as PDF in the browser. This uses browser printing and Unicode text without adding a PDF library or uploading report data. More report formats provides CSV and full JSON. CSV cells are escaped and protected against spreadsheet formula injection; print-view evidence and notes are HTML-escaped. Exports contain the public page report and personal checklist, not Google tokens or Search Console data. Reports and notes remain in tab memory unless the visitor exports them.
+
+The HTML build uses React's renderToString for hydrateRoot compatibility. The Node preview forwards streaming response bodies rather than buffering a whole audit. Forty-four automated checks cover the existing audit and Google boundaries plus progress ordering, cancellation, interrupted streams, client validation and export safety.
+
 ## Finding search and repeat checks
 
 Findings now include optional To do / Working on it / Reviewed progress and personal notes inside their existing details. A collapsed action checklist summarises flagged and personally annotated findings. State is isolated by exact final URL and retained only in tab memory; Save includes the current page's checklist in JSON. A changed evidence string is explicitly flagged and is not counted as a current reviewed item until reconfirmed. Manual progress never alters automated finding status.

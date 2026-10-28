@@ -11,9 +11,15 @@ Verified 27 October 2026.
 
 Sites audience is public. Page audits require no account. The homepage Work section includes PINSEO Audit beside BizTrack and FlowTrack, with the matching PA logo and card styling. Homepage navigation is Ebook, Work, Shop, About, Login.
 
-## Current release
+## Usability update — 27 October 2026
 
-Sites version 9 is live at source commit 6ae2aa02be08ece2b2417d25ad5b21302ca96617. Deployment appgdep_6ae0661a7c9c8191aab12bc85234cd22 succeeded with environment revision 1. GitHub is a source backup with its own commit history; GitHub CI checks the code and does not deploy production. The app and legal-page footers now say Produced by Futura Group. WordPress page 382 was updated separately: the launch credit, footer, search title/description and inherited Open Graph/Twitter title/description now use Produced by Futura Group. The wordpress directory stores its matching launch HTML and metadata settings.
+The update preserves Site identity, public audience, custom domain, environment configuration, Google scopes and branding. It adds real streamed audit stages, cancellation, clearly labelled preliminary page findings, early address validation, practical finding guides and complete PDF/print, CSV and JSON reports. Browser printing creates PDFs locally; there is no report upload or new PDF dependency. Partial streams are not exportable and never replace the last completed report or its comparison baseline. The original layout and Produced by Futura Group credit are retained.
+
+Automated verification: 44 tests passed and the self-contained Worker built successfully. Local browser checks confirmed completed real audits, cancellation retaining the last report, immediate invalid-address feedback, WordPress guidance, and a full 16-finding print view including a test note while the application view was filtered to one finding. A fresh preview has no React initialization errors after replacing non-hydratable static rendering with renderToString. Chrome's viewport override did not change the actual page width, so a real phone-width browser check remains unverified. Release version and deployment identity are recorded by native Sites history after publication.
+
+## Deployment history (earlier release)
+
+Sites version 9 was deployed at source commit 6ae2aa02be08ece2b2417d25ad5b21302ca96617. Deployment appgdep_6ae0661a7c9c8191aab12bc85234cd22 succeeded with environment revision 1. GitHub is a source backup with its own commit history; GitHub CI checks the code and does not deploy production. The app and legal-page footers now say Produced by Futura Group. WordPress page 382 was updated separately: the launch credit, footer, search title/description and inherited Open Graph/Twitter title/description now use Produced by Futura Group. The wordpress directory stores its matching launch HTML and metadata settings.
 
 The minimal interface has one URL field and Run audit action, Review findings first, a direct Test speed link in the results toolbar, and collapsed help and Google panels. The WordPress landing now matches FlowTrack and BizTrack: dark full-width layout, shared navigation and typography, PA logo and one launch button. The Google report now adds 7/28/90-day periods, independent previous-period totals, and on-demand Search terms, Top pages, Devices, Countries and Trends views. Charts and tables use returned Google rows only. The custom domain returns HTTP 200. The hosted Google client is configured; testing status is explicit. No client secret is used by PINSEO.
 
@@ -25,7 +31,7 @@ Live Chrome testing successfully completed consent, listed accessible properties
 
 Google publishing status remains Testing. The Google console shows a lifetime cap of 100 users before verification; only approved test users can connect while testing. Public Google release/verification is not complete. The general public can still use page audits without signing in. See SEARCH_CONSOLE_SETUP.md.
 
-## Verification
+## Earlier verification
 
 The current app includes domain-friendly entry, finding search and priority filters, same-page repeat comparisons, an action checklist with progress and notes, and search/sort/opportunity filters for returned Google terms and pages. Notes and progress remain in tab memory; Save includes them in the downloaded JSON. The checklist and keyword controls passed local interface checks; the keyword controls used explicitly labelled sample data. A live audit and the published credits were verified in Chrome. The existing Google authorization flow was unchanged; a new authenticated Google check and phone-size check were not completed for these updates.
 
