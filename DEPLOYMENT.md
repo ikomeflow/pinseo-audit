@@ -1,6 +1,10 @@
 # PINSEO Audit deployment
 
-Verified 27 October 2026.
+Verified 28 October 2026.
+
+## Approved homepage ownership verification — 28 October 2026
+
+The user explicitly approved verifying https://audit.ikomeflow.com/ for ikome2flow@gmail.com. A persistent Google verification meta tag was added to the homepage head in build.mjs, with no visible design change. Sites version 13 (source a333e3ea00fcd36cab853113386968a12d03ae70) deployed successfully as appgdep_6ae1cda8ed1881919f95dde39c29850b with environment revision 2. The exact custom-domain homepage returned HTTP 200 with one matching verification tag. Google Search Console then confirmed Ownership verified using HTML tag. No other website or account was granted owner access. Keep the tag permanently. Google branding remains pending a recheck after its requested 24-hour propagation period. A fresh public-user consent flow has not been tested.
 
 ## Affected-item update — 27 October 2026
 
