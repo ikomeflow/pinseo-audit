@@ -58,8 +58,8 @@ test('stream API sends real page findings before resource checks and preserves a
 test('complete printable report retains Unicode and all findings while escaping user evidence and notes',()=>{
   const notes=[{id:'h1',status:'reviewed',note:'<img src=x onerror=alert(1)> & "my notes"',evidenceChanged:true}];
   const hostile={...report,checks:[{...checks[0],evidence:checks[0].evidence+' <script>alert(1)</script>'},checks[1]]};
-  const html=reportHtml(hostile,notes);
-  assert.match(html,/HTTPS address/);assert.match(html,/WordPress steps/);assert.match(html,/日本語/);assert.match(html,/Findings:<\/strong> 2/);
+  const html=reportHtml(hostile,notes,'wordpress');
+  assert.match(html,/HTTPS address/);assert.match(html,/WordPress instructions/);assert.match(html,/日本語/);assert.match(html,/Findings:<\/strong> 2/);
   assert.doesNotMatch(html,/<script>|<img src=x/);assert.match(html,/&lt;script&gt;/);assert.match(html,/&lt;img/);assert.match(html,/Evidence changed/);
 });
 

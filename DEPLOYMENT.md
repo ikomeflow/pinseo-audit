@@ -1,6 +1,42 @@
 # PINSEO Audit deployment
 
+## Focused results layout — 29 October 2026
+
+The existing public Site, domain, Google environment/scopes and PA branding are retained. Results use one report card with status navigation and a consolidated filter panel. Evidence and the next action appear together; review steps contain platform choice. Extra functions share Tools & saved work. Streamed results collapse entry into one in-report progress/cancel control, and exports remain disabled while checking. A zero-review response links directly to recorded checks. Existing notes/history, comparisons and full exports are retained; no dependency or service was added.
+
+All 68 automated tests pass. Chrome verified real flagged and zero-review reports, filters/reset, one expanded finding, cancellation preserving the last report, recheck progress, saved notes/history, contextual Google tools and a complete 16-finding print export with notes. Expanded instructions and notes fit browser-emulated 390/320-pixel widths with no horizontal overflow. No physical-device or fresh Google consent test was performed. Sites history records the matching source, version and deployment identities.
+
+## Interface copy cleanup — 29 October 2026
+
+The existing public Site and visual design are retained. Repeated slogans and explanatory text are removed or shortened; review instructions now use an explicit expandable steps control. The next action, finding status, filter description, note-saving indicator and important error/privacy information remain available. Detailed exports, storage formats, audit checks and Google authorization behavior are unchanged. No dependency or service was added. Matching release identity is recorded by Sites version history.
+
+All 68 automated tests pass. Chrome verified instructions opening, evidence, preserved saved notes and collapsed report widths of 320/390 pixels without page overflow. These are browser-emulated widths; no physical handset or new Google consent flow was tested.
+
 Verified 28 October 2026.
+
+## Result clarity and unsaved-work update — 28 October 2026
+
+The existing layout and Site identity are retained. This release separates scope, failed-resource, no-image and absent-JSON-LD labels in the interface and human-readable exports while preserving raw JSON statuses and stored formats. It adds one visible filter description/reset and an inline saving indicator for notes. Device saving remains opt-in. The unload warning exists only while personal notes/progress differ from successful saved snapshots; supported browsers control whether a warning appears. Reopening saved reports retains newer in-tab notes. Google permissions, runtime configuration, public audience and dependencies are unchanged.
+
+Chrome verified a fresh real audit, updated labels on legacy reports, combined filters and reset, the inline unsaved indicator, focus from Save options, cancelling a detected reload warning without losing the note, saving and reloading without a warning, and 390/320-pixel document widths without overflow. These widths use browser emulation. Sixty-eight automated tests pass. Physical-device testing and a new Google consent test were not performed. Matching source/version/deployment identities are recorded in Sites history.
+
+## Minimal Workspace update — 28 October 2026
+
+This release preserves the existing Site identity, public audience, domain, Google environment/scopes and PA branding. It introduces a slim navy header, desktop topic navigation with a phone select, compact status filters, one expanded finding, selected-platform guidance first, and expandable evidence/notes/general guidance. Recheck page remains primary; Report options groups existing exports and the Google speed link. New audit opens and focuses address entry while retaining the current report. Storage errors automatically reveal the saving controls. No new dependency or service is introduced.
+
+Chrome verified two real audits, keyboard navigation, topic/status filters, one-open-finding behavior, invalid-address feedback, saved note/progress/platform restoration and reopening, the full print report, and actual 390/320-pixel document widths with no horizontal overflow. This is browser emulation, not a physical-phone check. Google authorization was unchanged and was not newly exercised. Sixty-two automated tests pass. The matching source and production identity are recorded by Sites version history.
+
+## Platform and recent-audit update — 28 October 2026
+
+This release keeps the existing Site ID, public audience, visual branding, Google environment and scopes. It adds explicit platform-specific guidance, optional five-page browser-local history with migration of existing saves, and a visible comparison summary. Saved reports remain older observations until rechecked. Per-page notes and platform choices are isolated by exact final URL; unavailable or omitted checks are not counted as fixes. The latest eligible saved result can supply a same-page comparison baseline after visiting another page. No account, database, analytics, external AI provider or new dependency is added.
+
+Local Chrome verification covered the migration of an actual previous save, two successful public audits, platform switching, note/platform isolation after reopening and refreshing, print guidance, recheck summary, clear-history behavior and actual 390/320-pixel widths with no horizontal overflow. Sixty-two automated tests pass for this release. Deployment identity is recorded by Sites version history.
+
+## Results and saved progress update — 28 October 2026
+
+The first priority finding opens with its recommended next step. Address entry collapses after success; search/filter controls are expandable. The public-page report uses clearer status labels and a prominent exact-page recheck button. Readability is increased, including 14px mobile filter controls. Optional device saving keeps only the latest completed public-page report, a same-page comparison and its checklist. Google connection/data are excluded by an explicit serialization allowlist. Saved reports are labelled as older results until rechecked. Removing the local copy disables saving. Help, privacy and exports match these changes.
+
+Chrome verified a real ikomeflow.com audit, notes and progress restored after refresh, rechecking without losing notes, existing comparison, search and complete print report with all 16 findings and the test note. Actual responsive document widths of 390 and 320 matched their scroll widths. Fifty-three tests pass. WordPress page 382 was saved separately and its public page now describes Search Console property access instead of approved test accounts. Publication identity for the application is recorded in Sites version history.
 
 ## Approved homepage ownership verification — 28 October 2026
 
